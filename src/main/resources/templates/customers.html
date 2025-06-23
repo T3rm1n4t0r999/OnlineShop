@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Список покупателей</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Список покупателей</h1>
+<a th:href="@{/customers/create}">Создать нового покупателя</a>
+<table border= 1>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>ФИО</th>
+    <th>Номер_телефонф</th>
+    <th>Тип_покупателя</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="customer : ${customers}">
+    <td th:text="${customer.customerID}"></td>
+    <td th:text="${customer.customerName}"></td>
+    <td th:text="${customer.customerPhone}"></td>
+    <td th:text="${customer.customerType}"></td>
+    <td>
+      <a th:href="@{/customers/{id}(id=${customer.customerID})}">Просмотр</a>
+      <a th:href="@{/customers/{id}/edit(id=${customer.customerID})}">Редактировать</a>
+      <form th:action="@{/customers/{id}/delete(id=${customer.customerID})}" method="post" style="display:inline;">
+        <button type="submit">Удалить</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

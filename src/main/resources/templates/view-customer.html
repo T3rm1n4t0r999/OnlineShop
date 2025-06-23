@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Информация о покупателе</title>
+  <meta charset="UTF-8">
+</head>
+  <body>
+  <h1>Информация о покупателе</h1>
+  <p><strong>ID:</strong> <span th:text="${customer.customerID}"></span></p>
+  <p><strong>Имя:</strong> <span th:text="${customer.customerName}"></span></p>
+  <p><strong>Номер_телефона:</strong> <span th:text="${customer.customerPhone}"></span></p>
+  <p><strong>Тип_покупателя:</strong> <span th:text="${customer.customerType}"></span></p>
+  <a th:href="@{/customers/{id}/edit(id=${customer.id})}">Редактировать</a>
+  <a th:href="@{/customers}">Назад к списку</a>
+  </body>
+</html>

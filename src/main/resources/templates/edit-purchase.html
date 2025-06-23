@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактировать заказ</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Редактировать покупателя</h1>
+<form th:action="@{/customers/{id}(id=${customer.customerID})}" method="post">
+    <label for="customerName">Имя:</label>
+    <input type="text" id="customerName" name="customerName" th:value="${customer.customerName}" required><br>
+
+    <label for="customerPhone">Имя:</label>
+    <input type="text" id="customerPhone" name="customerPhone" th:value="${customer.customerPhone}" required><br>
+
+    <label for="customerType">Возраст:</label>
+    <input type="text" id="customerType" name="customerType" th:value="${customer.customerType}" required><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+<a th:href="@{/customers}">Назад к списку</a>
+</body>
+</html>

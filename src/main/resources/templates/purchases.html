@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список заказов</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Список заказов</h1>
+<a th:href="@{/purchases/create}">Создать новый заказ</a>
+<table border=1>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ФИО_покупателя</th>
+        <th>Тип_оплаты</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="purchase : ${purchases}">
+        <td th:text="${purchase.purchaseID}"></td>
+        <td th:text="${purchase.customerID}"></td>
+        <td th:text="${purchase.payType}"></td>
+        <td>
+            <a th:href="@{/purchases/{id}(id=${purchase.purchaseID})}">Просмотр</a>
+            <a th:href="@{/purchases/{id}/edit(id=${purchase.purchaseID})}">Редактировать</a>
+            <form th:action="@{/purchases/{id}/delete(id=${purchase.purchaseID})}" method="post" style="display:inline;">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
